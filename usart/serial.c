@@ -37,6 +37,28 @@ void putc(unsigned char c)
     UTXH0 = c;
 }
 
+
+void putint(unsigned int d)
+{
+	int i = 0;
+	for(i = 0;i < 4;i++)
+	{
+		putc(d&0xff);
+		d = d >> 8;
+	}
+}
+/*
+ * 发送一个字符
+ */
+
+void puts(char * s)
+{
+	while(*s)
+	{
+		putc(*s++);
+	}
+}
+
 /*
  * 接收字符
  */

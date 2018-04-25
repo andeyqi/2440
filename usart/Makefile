@@ -1,15 +1,15 @@
 objs := head.o init.o serial.o main.o
 
 uart.bin: $(objs)
-	arm-linux-ld -Tuart.lds -o uart_elf $^
+	arm-linux-ld -Tuart.lds -o uart_elf $^ 
 	arm-linux-objcopy -O binary -S uart_elf $@
 	arm-linux-objdump -D -m arm uart_elf > uart.dis
 	
 %.o:%.c
-	arm-linux-gcc -Wall -O2 -c -o $@ $<
+	arm-linux-gcc -Wall -O0 -c -o $@ $< -Tuart.lds -g -std=gnu99
 
 %.o:%.S
-	arm-linux-gcc -Wall -O2 -c -o $@ $<
+	arm-linux-gcc -Wall -O0 -c -o $@ $< -Tuart.lds -g
 
 clean:
 	rm -f uart.bin uart_elf uart.dis *.o		
