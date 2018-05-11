@@ -1,4 +1,4 @@
-objs := head.o init.o serial.o main.o
+objs := head.o init.o serial.o main.o printf.o
 
 uart.bin: $(objs)
 	arm-linux-ld -Tuart.lds -o uart_elf $^ 
