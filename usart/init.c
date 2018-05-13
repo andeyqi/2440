@@ -89,7 +89,7 @@ void copy_steppingstone_to_sdram(void)
     unsigned int *pdwSrc  = (unsigned int *)0;
     unsigned int *pdwDest = (unsigned int *)0x30000000;
     
-    while (pdwSrc < (unsigned int *)4096)
+    while (pdwSrc < (unsigned int *)8192)
     {
         *pdwDest = *pdwSrc;
         pdwDest++;
